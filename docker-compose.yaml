@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  client:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    networks:
+      - rzd
+    ports:
+      - "23000:3000"
+  server:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    networks:
+      - rzd
+    ports:
+      - "23001:8080"
+  recommender:
+    build:
+      context: recommender
+      dockerfile: Dockerfile
+    networks:
+      - rzd
+    ports:
+      - "23002:5000"
+    volumes:
+      - ./recommender/model.pkl:/app/model.pkl
+      - ./recommender/train.csv:/app/train.csv
+  fictional-api:
+    build:
+      context: fictional-api
+      dockerfile: Dockerfile
+    networks:
+      - rzd
+    ports:
+      - "23003:18000"
+    volumes:
+      - ./fictional-api/data:/app/data
+networks:
+  rzd:
+    driver: bridge

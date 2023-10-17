@@ -1,0 +1,16 @@
+RZD-Fictional-API:
+- /departures
+	- Returns all the departures
+		- Each departure has route, train name, time, vacant seats  
+- /departures/data
+	- Recieves departure's route, train name, time and vacant seats
+	  plus user's preferences (e.g. train types, lower or upper shelf)
+	- Returns list of vacant seats in the next format:
+	  { trains: [ "id", "type", "seats": [ "id", "number", "status", "neighbours": [ { info } ] ] } 
+- /profile
+	- Returns user's fields (age, name, has kids, sex)
+? /chat
+	? Immitates a chat idea, could be implement in the front-end
+RZD-Recommender:
+- Add has_kids attribute
+- Recieve not just one but N clusters and return their distance average
