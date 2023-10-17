@@ -1,1 +1,0 @@
-curl 127.0.0.1:5000/cluster -X GET -d '{age:23,sex:female,interests:art,science,tech,job:foundry,bad_habits:smoking,drinking,sociality:4}'
